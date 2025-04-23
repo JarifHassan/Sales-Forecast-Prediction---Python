@@ -26,3 +26,14 @@ plt.legend()
 plt.xticks(rotation=0)
 plt.tight_layout()
 plt.show()
+
+#4. Feature Engineering – Creating Lagged Features
+
+def create_lagged_features(data, lag=1):
+    lagged_data = data.copy()
+    for i in range(1, lag+1):
+        lagged_data[f'lag_{i}'] = lagged_data['Sales'].shift(i)
+    return lagged_data
+lag = 5
+sales_with_lags = create_lagged_features(data[['Order Date', 'Sales']], lag)
+sales_with_lags = sales_with_lags.dropna()
