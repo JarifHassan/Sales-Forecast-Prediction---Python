@@ -59,4 +59,13 @@ print(f"RMSE: {rmse_xgb:.2f}")
 
 #8. Visualizing Results
 
-
+plt.figure(figsize=(12,6))
+plt.plot(y_test.index, y_test, label= 'Actual Sales', color='red')
+plt.plot(y_test.index, predictions_xgb, label = 'Predicted Sales', color='green')
+plt.title('Sales Forecasting using XGBoost')
+plt.xlabel('Date')
+plt.ylabel('Sales')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
